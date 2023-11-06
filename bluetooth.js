@@ -1,7 +1,7 @@
 import { speak } from "./voice.js";
 import { bytes2int16, log } from "./utils.js";
-import { csvSave } from "./csv_save.js";
-import { startChart, chartTypeEvent, addData } from "./chart.js";
+// import { csvSave } from "./csv_save.js";
+// import { startChart, chartTypeEvent, addData } from "./chart.js";
 // add new
 let serviceUuid = 0x181A;
 // let serviceUuid = "4fafc201-1fb5-459e-8fcc-c5c9c331914b";
@@ -63,8 +63,8 @@ export async function bleDisconnect() {
     await server.disconnect(); // 需要手動斷開 GATT 伺服器的連線
     speak('已斷開連接');
     log('> Notifications stopped');
-    csvSave(Acc, Gyro);
-    startChart(false);
+    // csvSave(Acc, Gyro);
+    // startChart(false);
     thresholdInput.disabled = true;
 }
 
@@ -93,7 +93,7 @@ async function connectDevice() {
             await characteristicTarget.startNotifications();
         };
         speak('成功連接');
-        startChart(true);
+        // startChart(true);
         // 啟用輸入框
         thresholdInput.disabled = false;
     } catch (error) {
@@ -169,14 +169,14 @@ function callback(event) {
             document.getElementById("accY").innerHTML = Y;
             document.getElementById("accZ").innerHTML = Z;
             Acc.push(["acc", X, Y, Z]);
-            if (chartTypeEvent() === "accChart") { addData(X, Y, Z) };
+            // if (chartTypeEvent() === "accChart") { addData(X, Y, Z) };
         }
         if (event.currentTarget.uuid === gyroUuid) {
             document.getElementById("gyroX").innerHTML = X;
             document.getElementById("gyroY").innerHTML = Y;
             document.getElementById("gyroZ").innerHTML = Z;
             Gyro.push(["gyro", X, Y, Z]);
-            if (chartTypeEvent() === "gyroChart") { addData(X, Y, Z) };
+            // if (chartTypeEvent() === "gyroChart") { addData(X, Y, Z) };
         }
     }
     
