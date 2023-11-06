@@ -37,9 +37,9 @@ document.getElementById("btn-lock").addEventListener("click", lock)
 //   speak("靠右前行");
 // })
 document.getElementById("btn-height").addEventListener("click", function () {
-  if(voiceState == "Ring"){
+  if (voiceState == "Ring") {
     document.getElementById('b_mp3').play();
-  }else{
+  } else {
     speak("注意高低差");
   }
 })
@@ -47,9 +47,9 @@ document.getElementById("btn-height").addEventListener("click", function () {
 //   speak("注意障礙物");
 // })
 document.getElementById("btn-GuideBrick").addEventListener("click", function () {
-  if(voiceState == "Ring"){
+  if (voiceState == "Ring") {
     document.getElementById('a_mp3').play();
-  }else{
+  } else {
     speak("發現導盲磚");
   }
 })
@@ -85,10 +85,13 @@ function toggleColorBle() {
 
 async function onStartButtonClick() {
   wakeLockStart();
-  startButton.classList.remove("btn-primary");
-  startButton.classList.add("btn-danger");
-  startButton.innerHTML = "點擊結束";
-  bleSearch();
+  bleSearch().then(function (result) {
+    if (result == "success") {
+      startButton.classList.remove("btn-primary");
+      startButton.classList.add("btn-danger");
+      startButton.innerHTML = "點擊結束";
+    };
+  })
 }
 
 async function onStopButtonClick() {

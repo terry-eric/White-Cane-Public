@@ -32,7 +32,7 @@ const Acc = [], Gyro = [], US = [];
 
 
 export async function bleSearch() {
-    try {
+    try {        
         log('Requesting Bluetooth Device...');
         device = await navigator.bluetooth.requestDevice({
             // add newDD
@@ -44,6 +44,7 @@ export async function bleSearch() {
 
         connectDevice();
         device.addEventListener('gattserverdisconnected', reConnect);
+        return "success"
 
     } catch (error) {
         speak('連接錯誤，請重新連接');
