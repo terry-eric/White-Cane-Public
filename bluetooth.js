@@ -1,6 +1,6 @@
 import { speak } from "./voice.js";
 import { bytes2int16, log } from "./utils.js";
-import { voiceState } from "/index.js";
+import { voiceState } from "./index.js";
 
 // add new
 let serviceUuid = 0x181A;
