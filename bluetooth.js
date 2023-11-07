@@ -113,7 +113,7 @@ function callback(event) {
         }
         console.log(a);
         let voiceMode = parseInt(a, 16);
-        if (voiceMode == 0) {
+        if (voiceMode == 4) {
             if (voiceState == "Ring") {
                 document.getElementById('b_mp3').play();
             }else{
@@ -121,7 +121,7 @@ function callback(event) {
             }
 
         }
-        if (voiceMode == 4) {
+        if (voiceMode == 0) {
             if (voiceState == "Ring"){
                 document.getElementById('a_mp3').play();
             }else{
