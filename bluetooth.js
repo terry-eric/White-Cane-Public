@@ -1,7 +1,7 @@
 import { speak } from "./voice.js";
 import { bytes2int16, log } from "./utils.js";
-// import { csvSave } from "./csv_save.js";
-// import { startChart, chartTypeEvent, addData } from "./chart.js";
+import { voiceState } from "/index.js";
+
 // add new
 let serviceUuid = 0x181A;
 // let serviceUuid = "4fafc201-1fb5-459e-8fcc-c5c9c331914b";
@@ -20,19 +20,8 @@ let service;
 let device;
 const Acc = [], Gyro = [], US = [];
 
-
-// let thresholdInput = document.getElementById("threshold")
-// thresholdInput.addEventListener("input", (event) => {
-//     let val = event.target.value;
-//     if (isNaN(val)) {
-//         sendModeEvent(thresholdUuid, val.toString());
-//         thresholdInput.placeholder = val;
-//     }
-// })
-
-
 export async function bleSearch() {
-    try {        
+    try {
         log('Requesting Bluetooth Device...');
         device = await navigator.bluetooth.requestDevice({
             // add newDD
@@ -64,9 +53,6 @@ export async function bleDisconnect() {
     await server.disconnect(); // 需要手動斷開 GATT 伺服器的連線
     speak('已斷開連接');
     log('> Notifications stopped');
-    // csvSave(Acc, Gyro);
-    // startChart(false);
-    thresholdInput.disabled = true;
 }
 
 async function connectDevice() {
@@ -94,9 +80,6 @@ async function connectDevice() {
             await characteristicTarget.startNotifications();
         };
         speak('成功連接');
-        // startChart(true);
-        // 啟用輸入框
-        thresholdInput.disabled = false;
     } catch (error) {
         console.log("連接錯誤", error);
     }
@@ -112,8 +95,6 @@ async function reConnect() {
             log('> Bluetooth Device connected. Try disconnect it now.');
             speak('成功連接');
             log('> Notifications started');
-            // 啟用輸入框
-            thresholdInput.disabled = false; 
         },
         function fail() {
             time('Failed to reconnect.');
@@ -122,8 +103,7 @@ async function reConnect() {
 }
 
 function callback(event) {
-    // console.log(event.currentTarget)
-    // console.log(event.currentTarget.uuid)
+
     if (event.currentTarget.uuid === voiceUuid) {
         let value = event.currentTarget.value;
         console.log(value);
@@ -134,19 +114,19 @@ function callback(event) {
         console.log(a);
         let voiceMode = parseInt(a, 16);
         if (voiceMode == 0) {
-            speak("無搜尋到導盲磚");
-        }
-        if (voiceMode == 1) {
-            speak("直走");
-        }
-        if (voiceMode == 2) {
-            speak("靠左前行");
-        }
-        if (voiceMode == 3) {
-            speak("靠右前行");
+            if (voiceState == "Ring") {
+                document.getElementById('b_mp3').play();
+            }else{
+                speak("注意高低差");
+            }
+
         }
         if (voiceMode == 4) {
-            speak("注意高低差")
+            if (voiceState == "Ring"){
+                document.getElementById('a_mp3').play();
+            }else{
+                speak("發現導盲磚");
+            }
         }
         console.log(voiceMode);
     }
@@ -166,21 +146,13 @@ function callback(event) {
         let Z = bytes2int16([bytes[4], bytes[5]]) / 100
 
         if (event.currentTarget.uuid === accUuid) {
-            document.getElementById("accX").innerHTML = X;
-            document.getElementById("accY").innerHTML = Y;
-            document.getElementById("accZ").innerHTML = Z;
             Acc.push(["acc", X, Y, Z]);
-            // if (chartTypeEvent() === "accChart") { addData(X, Y, Z) };
         }
         if (event.currentTarget.uuid === gyroUuid) {
-            document.getElementById("gyroX").innerHTML = X;
-            document.getElementById("gyroY").innerHTML = Y;
-            document.getElementById("gyroZ").innerHTML = Z;
             Gyro.push(["gyro", X, Y, Z]);
-            // if (chartTypeEvent() === "gyroChart") { addData(X, Y, Z) };
         }
     }
-    
+
     if (event.currentTarget.uuid == ultrasoundUuid) {
         let value = event.currentTarget.value;
         let a = [];
@@ -188,12 +160,7 @@ function callback(event) {
             a.push('0x' + ('00' + value.getUint8(i).toString(16)).slice(-2));
         }
         let bytes = a;
-        // console.log(bytes);
-        
         let val = bytes2int16([bytes[0], bytes[1]]) / 100
-        // console.log(val);
-
-        document.getElementById("ultrasound").innerHTML = val;
         US.push(["US", val])
     }
 }

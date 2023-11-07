@@ -3,13 +3,11 @@ import { speak } from "./voice.js";
 import { wakeLockStart, wakeLockStop } from "./keep_wake.js";
 import { bleSearch, bleDisconnect, sendModeEvent } from "./bluetooth.js";
 import { log } from "./utils.js";
-// import { creatNewChart, changeSensorChart } from "./chart.js";
 import { lock, positionBarCal, startPoint, unlock } from "./animation_erase.js";
 
 mouseTouchChange();
-// creatNewChart();
 
-let voiceState = "Ring";
+export let voiceState = "Ring";
 var startButton = document.getElementById("myButton");
 var modeButton = document.getElementById("bleButton");
 startButton.addEventListener("click", toggleColor);
@@ -23,19 +21,6 @@ lockScreen.addEventListener("mouseup", unlock);
 
 document.getElementById("btn-lock").addEventListener("click", lock)
 
-// // 測試按鈕 
-// document.getElementById("btn-front").addEventListener("click", function () {
-//   speak("直走");
-// })
-// document.getElementById("btn-none").addEventListener("click", function () {
-//   speak("無搜尋到導盲磚");
-// })
-// document.getElementById("btn-left").addEventListener("click", function () {
-//   speak("靠左前行");
-// })
-// document.getElementById("btn-right").addEventListener("click", function () {
-//   speak("靠右前行");
-// })
 document.getElementById("btn-height").addEventListener("click", function () {
   if (voiceState == "Ring") {
     document.getElementById('b_mp3').play();
@@ -43,9 +28,6 @@ document.getElementById("btn-height").addEventListener("click", function () {
     speak("注意高低差");
   }
 })
-// document.getElementById("btn-obstacle").addEventListener("click", function () {
-//   speak("注意障礙物");
-// })
 document.getElementById("btn-GuideBrick").addEventListener("click", function () {
   if (voiceState == "Ring") {
     document.getElementById('a_mp3').play();
@@ -53,9 +35,6 @@ document.getElementById("btn-GuideBrick").addEventListener("click", function () 
     speak("發現導盲磚");
   }
 })
-// document.getElementById("btn-Crosswalk").addEventListener("click", function () {
-//   speak("發現斑馬線");
-// })
 
 function toggleColor() {
   if (startButton.classList.contains("btn-primary")) {
@@ -71,15 +50,11 @@ function toggleColorBle() {
     modeButton.classList.add("btn-info");
     modeButton.innerHTML = "切換語音";
     voiceState = "Ring";
-    // sendModeEvent("input off");
-
   } else {
     modeButton.classList.remove("btn-info");
     modeButton.classList.add("btn-warning");
     modeButton.innerHTML = "切換鈴聲";
     voiceState = "Voice";
-    // sendModeEvent("output off");
-
   }
 }
 
@@ -108,7 +83,3 @@ async function onStopButtonClick() {
     log('Argh! ' + error);
   }
 }
-
-// var select = document.getElementById('dataChart');
-// 當選取選單時，設定要顯示的圖表類型
-// select.addEventListener('change', changeSensorChart);

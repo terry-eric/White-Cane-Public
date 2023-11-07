@@ -5,7 +5,6 @@
     <title>White Cane Connect APP</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no,maximum-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
@@ -30,9 +29,7 @@
         .front-6 {
             font-size: 6vh;
             text-align: center;
-            /* 將文字置中 */
             font-weight: bold;
-            /* 將文字設定為粗體 */
         }
     </style>
 </head>
@@ -60,83 +57,9 @@
             <button id="btn-lock" class="btn btn-warning outline btn-lg mb-3">螢幕保護</button>
         </div>
         <div class="front-6">警示聲測試⚠️</div>
-        <!-- <select name="dataChart" id="dataChart" class="form-select form-select-lg mb-3"
-            aria-label=".form-select-lg example">
-            <option value="noneChart">選擇生成的圖表</option>
-            <option value="accChart">Accelerometer</option>
-            <option value="gyroChart">Gyroscope</option>
-        </select>
-        
-        <div class="row justify-content-between g-2" style="height: 250px;">
-            <div class="col-6">
-                <div style="width: 100%; height: 100%;">
-                    <canvas id="myChart" style="width: 100%; height: 100%;"></canvas>
-                </div>
-            </div>
-            <div class="col-4">
-                <table class="table table-hover">
-                    <tbody style="text-align: center; vertical-align: middle;">
-                        <tr>
-                            <th>#</th>
-                            <th>Acc</th>
-                            <th>Gyro</th>
-                        </tr>
-                        <tr>
-                            <td>X</td>
-                            <td><span id="accX">-1</span></td>
-                            <td><span id="gyroX">-1</span></td>
-                        </tr>
-                        <tr>
-                            <td>Y</td>
-                            <td><span id="accY">-1</span></td>
-                            <td><span id="gyroY">-1</span></td>
-                        </tr>
-                        <tr>
-                            <td>Z</td>
-                            <td><span id="accZ">-1</span></td>
-                            <td><span id="gyroZ">-1</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="col-2">
-                <table class="table table-hover">
-                    <tbody style="text-align: center; vertical-align: middle;">
-                        <tr>
-                            <th>US</th>
-                        </tr>
-                        <tr>
-                            <td ><span id="ultrasound">-1</span></td>
-                        </tr>
-                        <tr>
-                            <th>TH</th>
-                        </tr>
-                        <tr>
-                            <td >
-                                <input id="threshold" type="text" style="max-width: 100%; width: 95%; text-align: center;" disabled>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div class="form-floating mt-3">
-            <textarea name="" id="log" cols="50" rows="10" class="form-control"
-                style="height: 300px ;background-color: transparent; " placeholder="Leave a comment here"
-                disabled></textarea>
-            <label style="background-color: transparent;" for="floatingTextarea2">Log</label>
-        </div> -->
-        <!-- <div class="btn-group btn-group-lg special mt-3" role="group" aria-label="Basic outlined example">
-            <button id="btn-front" type="button" class="btn btn-outline-secondary">Front</button>
-            <button id="btn-none" type="button" class="btn btn-outline-secondary">None</button>
-            <button id="btn-left" type="button" class="btn btn-outline-secondary">Left</button>
-            <button id="btn-right" type="button" class="btn btn-outline-secondary">Right</button>
-        </div> -->
         <div class="btn-group-vertical mt-3 btn-lg-2 col-12" role="group" aria-label="Basic outlined example">
             <button id="btn-height" type="button" class="btn btn-success front-6">注意高低差</button>
-            <!-- <button id="btn-obstacle" type="button" class="btn btn-outline-secondary">Obstacle</button> -->
             <button id="btn-GuideBrick" type="button" class="btn btn-info front-6">發現導盲磚</button>
-            <!-- <button id="btn-Crosswalk" type="button" class="btn btn-outline-secondary">Crosswalk</button> -->
         </div>
     </div>
     <script>
@@ -150,9 +73,7 @@
 
     </script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- <script type="module" src="chart.js"></script> -->
     <script type="module" src="animation_erase.js"></script>
-    <!-- <script type="module" src="csv_save.js"></script> -->
     <script type="module" src="bluetooth.js"></script>
     <script type="module" src="index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
