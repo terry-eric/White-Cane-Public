@@ -1,16 +1,16 @@
 self.addEventListener('install', (e) => {
     e.waitUntil(
         caches.open('fox-store').then((cache) => cache.addAll([
-            '/white-cane-app/sytle.css',
-            '/white-cane-app/index.js',
-            '/white-cane-app/animation_erase.js',
-            '/white-cane-app/bluetooth.js',
-            '/white-cane-app/chart.js',
-            '/white-cane-app/csv_save.js',
-            '/white-cane-app/keep_wake.js',
-            '/white-cane-app/mouse_event.js',
-            '/white-cane-app/voice.js',
-            '/white-cane-app/utils.js',
+            '/White-Cane-Public/sytle.css',
+            '/White-Cane-Public/index.js',
+            '/White-Cane-Public/animation_erase.js',
+            '/White-Cane-Public/bluetooth.js',
+            '/White-Cane-Public/chart.js',
+            '/White-Cane-Public/csv_save.js',
+            '/White-Cane-Public/keep_wake.js',
+            '/White-Cane-Public/mouse_event.js',
+            '/White-Cane-Public/voice.js',
+            '/White-Cane-Public/utils.js',
         ])),
     );
 });
