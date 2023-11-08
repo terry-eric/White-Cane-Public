@@ -123,7 +123,7 @@ function callback(event) {
         }
         if (voiceMode == 0) {
             if (voiceState == "Ring"){
-                document.getElementById('a_mp3').play();
+                document.getElementById('g_mp3').play();
             }else{
                 speak("發現導盲磚");
             }
