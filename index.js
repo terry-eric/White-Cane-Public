@@ -31,7 +31,7 @@ document.getElementById("btn-height").addEventListener("click", function () {
 })
 document.getElementById("btn-GuideBrick").addEventListener("click", function () {
   if (voiceState == "Ring") {
-    document.getElementById('a_mp3').play();
+    document.getElementById('g_mp3').play();
   } else {
     speak("發現導盲磚");
   }
