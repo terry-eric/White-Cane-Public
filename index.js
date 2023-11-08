@@ -10,6 +10,7 @@ mouseTouchChange();
 export let voiceState = "Ring";
 var startButton = document.getElementById("myButton");
 var modeButton = document.getElementById("bleButton");
+var modeText = document.getElementById("voice-toggle");
 startButton.addEventListener("click", toggleColor);
 modeButton.addEventListener("click", toggleColorBle);
 
@@ -48,12 +49,12 @@ function toggleColorBle() {
   if (modeButton.classList.contains("btn-warning")) {
     modeButton.classList.remove("btn-warning");
     modeButton.classList.add("btn-info");
-    modeButton.innerHTML = "切換語音";
+    modeText.innerHTML = "語音";
     voiceState = "Ring";
   } else {
     modeButton.classList.remove("btn-info");
     modeButton.classList.add("btn-warning");
-    modeButton.innerHTML = "切換鈴聲";
+    modeText.innerHTML = "鈴聲";
     voiceState = "Voice";
   }
 }

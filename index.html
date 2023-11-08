@@ -17,7 +17,8 @@
             height: 20vh;
             font-weight: bold;
             font-size: 6vh;
-            line-height: 1.2em; /* 減少行高 */
+            line-height: 1.2em;
+            /* 減少行高 */
         }
 
         .btn-lg-2 {
@@ -47,14 +48,24 @@
             </div>
         </div>
     </div>
-    <div class="container mt-3">
+    <div class="container-fluid mt-3">
         <div class="front-6">導盲杖APP😊</div>
         <div class="d-grid gap-2">
             <button id="myButton" class="btn btn-primary outline btn-lg mb-3">點擊開始</button>
         </div>
         <div class="d-grid gap-2 equal-width-btns">
-            <button id="bleButton" class="btn btn-info outline btn-lg mb-3">切換語音</button>
-            <button id="btn-lock" class="btn btn-warning outline btn-lg mb-3">螢幕保護</button>
+            <button id="bleButton" class="btn btn-info outline btn-lg mb-3">
+                <div>切換</div>
+                <div id="voice-toggle">語音</div>
+            </button>
+            <button id="btn-lock" class="btn btn-warning outline btn-lg mb-3">
+                <div>
+                    螢幕
+                </div>
+                <div>
+                    保護
+                </div>
+            </button>
         </div>
         <div class="front-6">警示聲測試⚠️</div>
         <div class="btn-group-vertical mt-3 btn-lg-2 col-12" role="group" aria-label="Basic outlined example">
