@@ -125,7 +125,8 @@ function callback(event) {
             if (voiceState == "Ring"){
                 document.getElementById('g_mp3').play();
             }else{
-                speak("發現導盲磚");
+                // speak("發現導盲磚");
+                speak("發現斑馬線");
             }
         }
         console.log(voiceMode);

@@ -33,7 +33,8 @@ document.getElementById("btn-GuideBrick").addEventListener("click", function () 
   if (voiceState == "Ring") {
     document.getElementById('g_mp3').play();
   } else {
-    speak("發現導盲磚");
+    // speak("發現導盲磚");
+    speak("發現斑馬線");
   }
 })
 
