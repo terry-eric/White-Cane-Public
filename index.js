@@ -26,7 +26,7 @@ document.getElementById("btn-height").addEventListener("click", function () {
   if (voiceState == "Ring") {
     document.getElementById('b_mp3').play();
   } else {
-    speak("注意高低差");
+    speak("Pay attention to height differences");
   }
 })
 document.getElementById("btn-GuideBrick").addEventListener("click", function () {
@@ -34,7 +34,7 @@ document.getElementById("btn-GuideBrick").addEventListener("click", function () 
     document.getElementById('g_mp3').play();
   } else {
     // speak("發現導盲磚");
-    speak("發現斑馬線");
+    speak("Detect zebra crossing");
   }
 })
 
@@ -50,12 +50,12 @@ function toggleColorBle() {
   if (modeButton.classList.contains("btn-warning")) {
     modeButton.classList.remove("btn-warning");
     modeButton.classList.add("btn-info");
-    modeText.innerHTML = "語音";
+    modeText.innerHTML = "Speech";
     voiceState = "Ring";
   } else {
     modeButton.classList.remove("btn-info");
     modeButton.classList.add("btn-warning");
-    modeText.innerHTML = "鈴聲";
+    modeText.innerHTML = "Ringtone";
     voiceState = "Voice";
   }
 }
@@ -66,7 +66,7 @@ async function onStartButtonClick() {
     if (result == "success") {
       startButton.classList.remove("btn-primary");
       startButton.classList.add("btn-danger");
-      startButton.innerHTML = "點擊結束";
+      startButton.innerHTML = "Click to end";
     };
   })
 }
@@ -75,7 +75,7 @@ async function onStopButtonClick() {
   wakeLockStop();
   startButton.classList.remove("btn-danger");
   startButton.classList.add("btn-primary");
-  startButton.innerHTML = "點擊開始";
+  startButton.innerHTML = "Click to start";
 
   try {
     bleDisconnect();

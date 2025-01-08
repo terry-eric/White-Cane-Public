@@ -36,7 +36,7 @@ export async function bleSearch() {
         return "success"
 
     } catch (error) {
-        speak('連接錯誤，請重新連接');
+        speak('Connection error, please reconnect');
         log('Argh! ' + error);
     }
 }
@@ -51,7 +51,7 @@ export async function bleDisconnect() {
     }
     device.removeEventListener('gattserverdisconnected', reConnect);
     await server.disconnect(); // 需要手動斷開 GATT 伺服器的連線
-    speak('已斷開連接');
+    speak('Disconnected');
     log('> Notifications stopped');
 }
 
@@ -79,9 +79,9 @@ async function connectDevice() {
             // 啟用 characteristic 的通知功能，這樣當 characteristic 的值改變時，就會發送通知
             await characteristicTarget.startNotifications();
         };
-        speak('成功連接');
+        speak('Successfully connected');
     } catch (error) {
-        console.log("連接錯誤", error);
+        console.log("Connection error", error);
     }
 }
 
@@ -93,7 +93,7 @@ async function reConnect() {
         },
         function success() {
             log('> Bluetooth Device connected. Try disconnect it now.');
-            speak('成功連接');
+            speak('Connected successfully');
             log('> Notifications started');
         },
         function fail() {
@@ -117,7 +117,7 @@ function callback(event) {
             if (voiceState == "Ring") {
                 document.getElementById('b_mp3').play();
             }else{
-                speak("注意高低差");
+                speak("Watch your step");
             }
 
         }
@@ -126,7 +126,7 @@ function callback(event) {
                 document.getElementById('g_mp3').play();
             }else{
                 // speak("發現導盲磚");
-                speak("發現斑馬線");
+                speak("Crosswalk detected");
             }
         }
         console.log(voiceMode);
@@ -176,7 +176,7 @@ export async function sendModeEvent(message, Uuid) {
         await new Promise((resolve, reject) => {
             characteristicBle.writeValue(data)
                 .then(() => {
-                    console.log('訊息傳送成功');
+                    console.log('Message sent successfully');
                     resolve();
                 })
                 .catch((error) => {
